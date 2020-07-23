@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using CoreEscule.Entidades;
 
 namespace Etapa1
@@ -11,7 +11,7 @@ namespace Etapa1
                 pais: "Chile", ciudad: "Santiago"
             );
 
-            Curso []arregloCursos = {
+            escuela.Cursos = new Curso[]{
                 new Curso(){ Nombre = "101" },
                 new Curso(){ Nombre = "201" },              
                 new Curso{ Nombre = "301"   }               
