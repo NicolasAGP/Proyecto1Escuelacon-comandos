@@ -11,27 +11,13 @@ namespace Etapa1
                 pais: "Chile", ciudad: "Santiago"
             );
 
-            var arregloCursos = new Curso[3];
-
-            arregloCursos[0] = new Curso()
-            {
-                Nombre = "101"
+            Curso []arregloCursos = {
+                new Curso(){ Nombre = "101" },
+                new Curso(){ Nombre = "201" },              
+                new Curso{ Nombre = "301"   }               
             };
 
-            var curso2 = new Curso()
-            {
-
-                Nombre = "301"
-
-            };
-            arregloCursos[1] = curso2;
-
-            arregloCursos[2] = new Curso
-            {
-
-                Nombre = "301"
-
-            };
+           
 
 
             Console.WriteLine(escuela);
