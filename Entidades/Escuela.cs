@@ -30,8 +30,7 @@ namespace CoreEscule.Entidades
         
 
     }
-
-
+        //prueba2
 
     public override string ToString()
     {
