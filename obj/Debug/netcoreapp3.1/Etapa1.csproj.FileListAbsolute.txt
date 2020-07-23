@@ -1,0 +1,13 @@
+C:\Users\56994\Desktop\Proyectos\Etapa1\bin\Debug\netcoreapp3.1\Etapa1.exe
+C:\Users\56994\Desktop\Proyectos\Etapa1\bin\Debug\netcoreapp3.1\Etapa1.deps.json
+C:\Users\56994\Desktop\Proyectos\Etapa1\bin\Debug\netcoreapp3.1\Etapa1.runtimeconfig.json
+C:\Users\56994\Desktop\Proyectos\Etapa1\bin\Debug\netcoreapp3.1\Etapa1.runtimeconfig.dev.json
+C:\Users\56994\Desktop\Proyectos\Etapa1\bin\Debug\netcoreapp3.1\Etapa1.dll
+C:\Users\56994\Desktop\Proyectos\Etapa1\bin\Debug\netcoreapp3.1\Etapa1.pdb
+C:\Users\56994\Desktop\Proyectos\Etapa1\obj\Debug\netcoreapp3.1\Etapa1.csprojAssemblyReference.cache
+C:\Users\56994\Desktop\Proyectos\Etapa1\obj\Debug\netcoreapp3.1\Etapa1.AssemblyInfoInputs.cache
+C:\Users\56994\Desktop\Proyectos\Etapa1\obj\Debug\netcoreapp3.1\Etapa1.AssemblyInfo.cs
+C:\Users\56994\Desktop\Proyectos\Etapa1\obj\Debug\netcoreapp3.1\Etapa1.csproj.CoreCompileInputs.cache
+C:\Users\56994\Desktop\Proyectos\Etapa1\obj\Debug\netcoreapp3.1\Etapa1.dll
+C:\Users\56994\Desktop\Proyectos\Etapa1\obj\Debug\netcoreapp3.1\Etapa1.pdb
+C:\Users\56994\Desktop\Proyectos\Etapa1\obj\Debug\netcoreapp3.1\Etapa1.genruntimeconfig.cache
