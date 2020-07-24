@@ -9,25 +9,9 @@ namespace Etapa1
     {
         static void Main(string[] args)
         {
-            var escuela = new Escuela("Camila y nico", 2020, TiposEscuela.Preescolar,
-                pais: "Chile", ciudad: "Santiago"
-            );
-            
-            escuela.Cursos = new List<Curso>(){
-                new Curso(){ Nombre = "101", Jornada = TiposJornada.mañana },
-                new Curso(){ Nombre = "201", Jornada = TiposJornada.mañana },              
-                new Curso{ Nombre = "301", Jornada = TiposJornada.mañana   }               
-            };
-          
-                 escuela.Cursos.Add(new Curso(){ Nombre="102", Jornada = TiposJornada.tarde});   
-                 escuela.Cursos.Add(new Curso(){ Nombre="202", Jornada = TiposJornada.tarde});   
 
-              var prueb = new List<Curso>(){
-                new Curso(){ Nombre = "401", Jornada = TiposJornada.mañana },
-                new Curso(){ Nombre = "501", Jornada = TiposJornada.mañana },              
-                new Curso{ Nombre = "601", Jornada = TiposJornada.mañana   }               
-            };
-               
+            var engine = new EscuelaEngine();
+            engine.Inicializar();
               /*   escuela.Cursos.AddRange(prueb);
                  ImprimirCursosEscuela(escuela);
 
@@ -40,7 +24,8 @@ namespace Etapa1
 
                 */ 
                  WriteLine("============");
-                 ImprimirCursosEscuela(escuela);
+                 ImprimirCursosEscuela(engine.Escuela);
+            
                  
          
         }
