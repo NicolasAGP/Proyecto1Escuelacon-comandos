@@ -1,5 +1,7 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
 using CoreEscule.Entidades;
+using static System.Console;
 
 namespace Etapa1
 {
@@ -10,70 +12,59 @@ namespace Etapa1
             var escuela = new Escuela("Camila y nico", 2020, TiposEscuela.Preescolar,
                 pais: "Chile", ciudad: "Santiago"
             );
-
-            escuela.Cursos = new Curso[]{
-                new Curso(){ Nombre = "101" },
-                new Curso(){ Nombre = "201" },              
-                new Curso{ Nombre = "301"   }               
-            };
-
-           
-
-
-            Console.WriteLine(escuela);
-            System.Console.WriteLine("=======================");
-            ImprimirCursosWhile(arregloCursos);
-            System.Console.WriteLine("=======================");
-            ImprimirCursosDoWhile(arregloCursos);
-            System.Console.WriteLine("=======================");
-            ImprimirCursosFor(arregloCursos);
-            System.Console.WriteLine("=======================");
-            ImprimirCursosForEach(arregloCursos);
-        }
-
-        private static void ImprimirCursosWhile(Curso[] arregloCursos)
-        {
-            int ol =0;
-            while (ol < arregloCursos.Length)
-            {
-                Console.WriteLine($"Nombre {arregloCursos[ol].Nombre}, Id {arregloCursos[ol].UniqueId}");
-                ol++;
-            }
-
-        }
-
-
-         private static void ImprimirCursosDoWhile(Curso[] arregloCursos)
-        {
-            int ol =0;
-            do 
-            {
-                Console.WriteLine($"Nombre {arregloCursos[ol].Nombre}, Id {arregloCursos[ol].UniqueId}");
-                ol++;
-            }while(ol < arregloCursos.Length);
-
-        }
-
-          private static void ImprimirCursosFor(Curso[] arregloCursos)
-        {
             
-            for (int i = 0; i < arregloCursos.Length; i++)
-            {
-               Console.WriteLine($"Nombre {arregloCursos[i].Nombre}, Id {arregloCursos[i].UniqueId}"); 
-            }
+            escuela.Cursos = new List<Curso>(){
+                new Curso(){ Nombre = "101", Jornada = TiposJornada.mañana },
+                new Curso(){ Nombre = "201", Jornada = TiposJornada.mañana },              
+                new Curso{ Nombre = "301", Jornada = TiposJornada.mañana   }               
+            };
+          
+                 escuela.Cursos.Add(new Curso(){ Nombre="102", Jornada = TiposJornada.tarde});   
+                 escuela.Cursos.Add(new Curso(){ Nombre="202", Jornada = TiposJornada.tarde});   
+
+              var prueb = new List<Curso>(){
+                new Curso(){ Nombre = "401", Jornada = TiposJornada.mañana },
+                new Curso(){ Nombre = "501", Jornada = TiposJornada.mañana },              
+                new Curso{ Nombre = "601", Jornada = TiposJornada.mañana   }               
+            };
+               
+              /*   escuela.Cursos.AddRange(prueb);
+                 ImprimirCursosEscuela(escuela);
+
+                 escuela.Cursos.RemoveAll(delegate(Curso cur)
+                 {
+                     return cur.Nombre == "301";      }
+                 );
+
+                escuela.Cursos.RemoveAll((Curso cur) => cur.Jornada == TiposJornada.mañana);
+
+                */ 
+                 WriteLine("============");
+                 ImprimirCursosEscuela(escuela);
+                 
+         
         }
 
+       
 
-           private static void ImprimirCursosForEach(Curso[] arregloCursos)
+        private static void ImprimirCursosEscuela(Escuela escuela)
         {
-            foreach (var cur in arregloCursos)
+            WriteLine("====================");
+            WriteLine("Cursos de la escuela");
+            WriteLine("====================");
+              
+            if(escuela?.Cursos != null){
+                
+            foreach(var curso in escuela.Cursos)
             {
-                Console.WriteLine($"Nombre {cur.Nombre}, Id {cur.UniqueId}"); 
+            WriteLine($"Nombre {curso.Nombre}, Id {curso.UniqueId}"); 
             }
-
+            }
         }
+
+       
         
     }
-
 }
+
 
