@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using CoreEscule.Entidades;
+using CoreEscuela.Entidades;
+using CoreEscuele;
 using static System.Console;
 
 namespace Etapa1

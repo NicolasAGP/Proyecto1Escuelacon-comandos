@@ -1,8 +1,16 @@
+using System.Collections.Generic;
+using CoreEscuela.Entidades;
+
 namespace CoreEscuele
 {
      public class EscuelaEngine
      {
-        public Escuela Escuela{get;set;}
+        public EscuelaEngine(Escuela escuela) 
+        {
+            this.Escuela = escuela;
+               
+        }
+                public Escuela Escuela{get;set;}
 
          public EscuelaEngine()
              {
