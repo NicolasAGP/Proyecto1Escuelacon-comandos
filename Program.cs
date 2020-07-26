@@ -39,6 +39,7 @@ namespace Etapa1
             WriteLine("====================");
             WriteLine("Cursos de la escuela");
             WriteLine("====================");
+             WriteLine("====================");
               
             if(escuela?.Cursos != null){
                 
