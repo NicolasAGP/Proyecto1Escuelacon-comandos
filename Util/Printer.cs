@@ -11,6 +11,7 @@ public static void DibujarLinea(int tamc= 10)
     var line = "".PadLeft(tamc, '=');
     WriteLine("====");
     WriteLine(line);
+    WriteLine("hola cami");
 
 
 }
