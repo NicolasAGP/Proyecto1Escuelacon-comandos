@@ -15,9 +15,10 @@ namespace CoreEscuela.Entidades
         public List<Asignatura> Asignaturas {get;set;}
 
         public List<Alumno> Alumonos {get;set;}
-      
+       
 
-        public float Nota {get; set;}
+        
+    
 
         
 

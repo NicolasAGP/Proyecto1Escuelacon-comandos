@@ -10,7 +10,8 @@ namespace CoreEscuela.Entidades
         public string Nombre {get; set;}  
 
         
-public List<Evaluaciones> Evaluacione {get; set;}
+        
+
         public Asignatura()=> UniqueId = Guid.NewGuid().ToString();
 
         internal void AddRangue(List<Asignatura> listaAsignatura)
