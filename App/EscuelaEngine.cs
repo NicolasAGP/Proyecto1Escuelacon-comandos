@@ -11,18 +11,20 @@ namespace CoreEscuela.Entidades
         {
             this.Escuela = escuela;
             
-        }
-        
-                public Escuela Escuela{get;set;}
+       }
 
-         public EscuelaEngine()
-             {
-              
-             }
+           public Escuela Escuela{get;set;}
+
+
+       public EscuelaEngine() 
+        {
+           
+            
+       }
            public void Inicializar()
         {
 
-            Escuela = new Escuela("Camila y nico", 2020, TiposEscuela.Preescolar,
+          Escuela = new Escuela("Camila y nico", 2020, TiposEscuela.Preescolar,
                           pais: "Chile", ciudad: "Santiago");
 
             CargarCursos();
@@ -32,14 +34,20 @@ namespace CoreEscuela.Entidades
 
         private void Cargarevaluaciones()
         {
-            
+         
         }
 
         private void CargarAsignaturas()
         {
-          
+        
+
             foreach (var curso in Escuela.Cursos)
             {
+             // var lol = new Asignatura();
+             // string n;
+             // n = lol.Nombre; 
+          
+              
               var ListaAsignaturas = new List<Asignatura>(){
                     new Asignatura{Nombre="Matematica"},
                     new Asignatura{Nombre="Lenguaje"},
