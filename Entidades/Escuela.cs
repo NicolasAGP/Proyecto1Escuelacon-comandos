@@ -1,10 +1,13 @@
+using System;
 using System.Collections.Generic;
 
 namespace CoreEscuela.Entidades
 {
     public class Escuela 
     {
-       string nombre;
+        
+        public string UniqueId {get; private set;} = Guid.NewGuid().ToString();
+               string nombre;
        public string Nombre{
            get{ return "Copia: " + nombre;}
            set{ nombre = value.ToUpper();}

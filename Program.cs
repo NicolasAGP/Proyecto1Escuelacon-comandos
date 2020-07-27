@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CoreEscuela.Entidades;
-using CoreEscuele;
+using CoreEscuela.Util;
 using static System.Console;
 
 namespace Etapa1
@@ -24,22 +24,20 @@ namespace Etapa1
                 escuela.Cursos.RemoveAll((Curso cur) => cur.Jornada == TiposJornada.mañana);
 
                 */ 
-                 WriteLine("============");
+                
                  ImprimirCursosEscuela(engine.Escuela);
+                 
                 
             
                  
          
         }
 
-       
-
+    
         private static void ImprimirCursosEscuela(Escuela escuela)
         {
-            WriteLine("====================");
-            WriteLine("Cursos de la escuela");
-            WriteLine("====================");
-            
+            Printer.Beep(10000, 500, 20);
+            Printer.WriteTitele("Curso de la escuela");
             
             if(escuela?.Cursos != null){
                 
