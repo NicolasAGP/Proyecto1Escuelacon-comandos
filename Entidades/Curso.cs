@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using CoreEscuela.Util;
 
 namespace CoreEscuela.Entidades
 {
-    public class Curso : ObjetoEscuelaBase
+    public class Curso : ObjetoEscuelaBase, ILugar
     {
         
        
@@ -13,15 +14,17 @@ namespace CoreEscuela.Entidades
         public List<Asignatura> Asignaturas {get;set;}
 
         public List<Alumno> Alumonos {get;set;}
-       
-
         
-    
-
-        
-
-       
+        public string Dirección { get; set; }
+       public  ILugar.LimpiarLugar()
+        {
+            Printer.DrawLine();
+            Console.WriteLine("Limpiando Escuela");
+            
+            Console.WriteLine($"Escuela {Nombre} Limpia");
+            
         }
+    }
 
     //prueba
 

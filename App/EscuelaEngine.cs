@@ -66,6 +66,30 @@ namespace CoreEscuela.Entidades
 
         }
 
+        public List<ObjetoEscuelaBase> GetObjetoEscel()
+        {
+
+            var ListObj = new List<ObjetoEscuelaBase>();
+            ListObj.Add(Escuela);
+            ListObj.AddRange(Escuela.Cursos);
+
+
+//integramos un polimorfismo para asiganrle valores a cada objeto
+            foreach (var curso in Escuela.Cursos)
+            {
+
+                   ListObj.AddRange(curso.Asignaturas);
+                   ListObj.AddRange(curso.Alumonos);
+                foreach (var alumno in curso.Alumonos)
+                {
+                   ListObj.AddRange(alumno.Evaluaciones);
+                    
+                }
+            }
+
+            return ListObj;
+        }
+
 
 
 
