@@ -34,6 +34,61 @@ namespace CoreEscuela.Entidades
 
 
 
+        public List<ObjetoEscuelaBase> GetObjetoEscel(
+              out int conteoEvaluaciones,
+            out int conteoCursos,
+            out int conteoAsignatura,
+            out int conteoAlumno,
+            bool traeEvaluaciones = true,
+            bool traeAlumnos = true,
+            bool traeAsignaturas = true,
+            bool traeCursos = true
+
+            )
+        {
+
+            var ListObj = new List<ObjetoEscuelaBase>();
+            ListObj.Add(Escuela);
+
+            conteoEvaluaciones = conteoAsignatura = conteoAlumno =  0;
+           
+            if (traeCursos)
+                ListObj.AddRange(Escuela.Cursos);
+
+
+            //integramos un polimorfismo para asiganrle valores a cada objeto
+            foreach (var curso in Escuela.Cursos)
+            {
+                
+                      
+                  conteoAsignatura += curso.Asignaturas.Count;
+                      conteoAlumno += curso.Alumonos.Count;
+
+
+                if (traeAsignaturas)
+                    ListObj.AddRange(curso.Asignaturas);
+
+                if (traeAlumnos)
+                    ListObj.AddRange(curso.Alumonos);
+
+                if (traeEvaluaciones)
+                {
+                    foreach (var alumno in curso.Alumonos)
+                    {
+
+                        ListObj.AddRange(alumno.Evaluaciones);
+                        conteoEvaluaciones += alumno.Evaluaciones.Count;
+
+                    }
+                }
+
+            }
+
+            return ListObj;
+        }
+
+
+
         public List<ObjetoEscuelaBase> GetObjetoEscel()
         {
 
@@ -43,6 +98,7 @@ namespace CoreEscuela.Entidades
 
 
             //integramos un polimorfismo para asiganrle valores a cada objeto
+
             foreach (var curso in Escuela.Cursos)
             {
 
@@ -59,7 +115,7 @@ namespace CoreEscuela.Entidades
         }
 
 
-#region carga de clases
+        #region carga de clases
         private void CargarEvaluaciones()
         {
             foreach (var curso in Escuela.Cursos)

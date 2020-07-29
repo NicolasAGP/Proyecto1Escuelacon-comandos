@@ -18,13 +18,13 @@ namespace Etapa1
             Printer.Beep(10000, cantidad:1);
             ImprimirCursosEscuela(engine.Escuela);
 
-           var Listadeobj = engine.GetObjetoEscel();
+           var Listadeobj = engine.GetObjetoEscel(false ,false, false, false);
                              
-            var ListaILugar = from oj in Listadeobj
-                              where oj is ILugar
-                              select (ILugar)oj;
+           // var ListaILugar = from oj in Listadeobj
+           //                   where oj is ILugar
+           //                   select (ILugar)oj;
 
-          // engine.Escuela.LimpiarLugar();       
+             
           
         }
 
