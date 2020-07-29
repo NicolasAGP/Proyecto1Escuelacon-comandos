@@ -6,9 +6,7 @@ namespace CoreEscuela.Entidades
 {
     public class Escuela : ObjetoEscuelaBase, ILugar
     {
-        
-      
-      
+              
       public int AñoDeCreación {get; set;}
 
       public string Pais { get; set; }
@@ -44,9 +42,10 @@ namespace CoreEscuela.Entidades
         
             Printer.DrawLine();
             Console.WriteLine("Limpiando Escuela");
+            Printer.Beep(100, cantidad:3);
             foreach (var curso in Cursos)
             {
-                curso.LimpiarLugar();
+               curso.LimpiarLugar();
             }
             Console.WriteLine($"Escuela {Nombre} Limpia");
             

@@ -16,7 +16,8 @@ namespace CoreEscuela.Entidades
         public List<Alumno> Alumonos {get;set;}
         
         public string Dirección { get; set; }
-       public  ILugar.LimpiarLugar()
+
+       public void LimpiarLugar()
         {
             Printer.DrawLine();
             Console.WriteLine("Limpiando Escuela");

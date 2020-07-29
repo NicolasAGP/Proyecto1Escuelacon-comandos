@@ -34,38 +34,6 @@ namespace CoreEscuela.Entidades
 
 
 
-
-        private void CargarEvaluaciones()
-        {
-              foreach (var curso in Escuela.Cursos)
-            {
-                foreach (var asignatura in curso.Asignaturas)
-                {
-                    foreach (var alumno in curso.Alumonos)
-                    {
-                        var rnd = new Random(System.Environment.TickCount);
-                    
-
-                    for (int i = 0; i < 5; i++)
-                    {
-                        var ev = new Evaluación
-                        {
-                            Asignatura = asignatura,
-                            Nombre = $"{asignatura.Nombre} Ev#{i + 1}",
-                            Nota = (float)(5 * rnd.NextDouble()),
-                            Alumno = alumno
-                        };
-                        alumno.Evaluaciones.Add(ev);
-                    }
-                    
-                    }
-
-
-                }
-            }
-
-        }
-
         public List<ObjetoEscuelaBase> GetObjetoEscel()
         {
 
@@ -74,16 +42,16 @@ namespace CoreEscuela.Entidades
             ListObj.AddRange(Escuela.Cursos);
 
 
-//integramos un polimorfismo para asiganrle valores a cada objeto
+            //integramos un polimorfismo para asiganrle valores a cada objeto
             foreach (var curso in Escuela.Cursos)
             {
 
-                   ListObj.AddRange(curso.Asignaturas);
-                   ListObj.AddRange(curso.Alumonos);
+                ListObj.AddRange(curso.Asignaturas);
+                ListObj.AddRange(curso.Alumonos);
                 foreach (var alumno in curso.Alumonos)
                 {
-                   ListObj.AddRange(alumno.Evaluaciones);
-                    
+                    ListObj.AddRange(alumno.Evaluaciones);
+
                 }
             }
 
@@ -91,8 +59,37 @@ namespace CoreEscuela.Entidades
         }
 
 
+#region carga de clases
+        private void CargarEvaluaciones()
+        {
+            foreach (var curso in Escuela.Cursos)
+            {
+                foreach (var asignatura in curso.Asignaturas)
+                {
+                    foreach (var alumno in curso.Alumonos)
+                    {
+                        var rnd = new Random(System.Environment.TickCount);
 
 
+                        for (int i = 0; i < 5; i++)
+                        {
+                            var ev = new Evaluación
+                            {
+                                Asignatura = asignatura,
+                                Nombre = $"{asignatura.Nombre} Ev#{i + 1}",
+                                Nota = (float)(5 * rnd.NextDouble()),
+                                Alumno = alumno
+                            };
+                            alumno.Evaluaciones.Add(ev);
+                        }
+
+                    }
+
+
+                }
+            }
+
+        }
 
         private void CargarAsignaturas()
         {
@@ -153,4 +150,5 @@ namespace CoreEscuela.Entidades
             }
         }
     }
+    #endregion
 }

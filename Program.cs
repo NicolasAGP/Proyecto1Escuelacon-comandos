@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using CoreEscuela.Entidades;
 using CoreEscuela.Util;
 using static System.Console;
@@ -18,7 +19,12 @@ namespace Etapa1
             ImprimirCursosEscuela(engine.Escuela);
 
            var Listadeobj = engine.GetObjetoEscel();
-            
+                             
+            var ListaILugar = from oj in Listadeobj
+                              where oj is ILugar
+                              select (ILugar)oj;
+
+          // engine.Escuela.LimpiarLugar();       
           
         }
 
