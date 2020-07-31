@@ -34,8 +34,66 @@ namespace CoreEscuela.Entidades
 
 
 
-        public List<ObjetoEscuelaBase> GetObjetoEscel(
-              out int conteoEvaluaciones,
+
+        public IReadOnlyList<ObjetoEscuelaBase> GetObjetoEscel(
+            bool traeEvaluaciones = true,
+            bool traeAlumnos = true,
+            bool traeAsignaturas = true,
+            bool traeCursos = true
+
+            )
+        {
+            return GetObjetoEscel(out int dummy, out dummy, out dummy, out dummy);
+
+        }
+
+
+
+        public IReadOnlyList<ObjetoEscuelaBase> GetObjetoEscel(
+            out int conteoEvaluaciones,
+            bool traeEvaluaciones = true,
+            bool traeAlumnos = true,
+            bool traeAsignaturas = true,
+            bool traeCursos = true
+
+            )
+        {
+            return GetObjetoEscel(out conteoEvaluaciones, out int dummy, out dummy, out dummy);
+
+        }
+
+         public IReadOnlyList<ObjetoEscuelaBase> GetObjetoEscel(
+            out int conteoEvaluaciones, out int conteoCursos,
+            bool traeEvaluaciones = true,
+            bool traeAlumnos = true,
+            bool traeAsignaturas = true,
+            bool traeCursos = true
+
+            )
+        {
+            return GetObjetoEscel(out conteoEvaluaciones, out conteoCursos,  out int dummy, out dummy);
+
+        }
+
+        public IReadOnlyList<ObjetoEscuelaBase> GetObjetoEscel(
+            out int conteoEvaluaciones, out int conteoCursos,
+             out int conteoAsignatura,
+            bool traeEvaluaciones = true,
+            bool traeAlumnos = true,
+            bool traeAsignaturas = true,
+            bool traeCursos = true
+
+            )
+        {
+            return GetObjetoEscel(out conteoEvaluaciones, out conteoCursos, out conteoAsignatura, out int dummy);
+
+        }
+
+
+
+
+        public IReadOnlyList<ObjetoEscuelaBase> GetObjetoEscel(
+            out int conteoEvaluaciones,
             out int conteoCursos,
             out int conteoAsignatura,
             out int conteoAlumno,
@@ -50,19 +108,18 @@ namespace CoreEscuela.Entidades
             var ListObj = new List<ObjetoEscuelaBase>();
             ListObj.Add(Escuela);
 
-            conteoEvaluaciones = conteoAsignatura = conteoAlumno =  0;
-           
+            conteoEvaluaciones = conteoAsignatura = conteoAlumno = 0;
+
             if (traeCursos)
                 ListObj.AddRange(Escuela.Cursos);
 
-
+            conteoCursos = Escuela.Cursos.Count;
             //integramos un polimorfismo para asiganrle valores a cada objeto
             foreach (var curso in Escuela.Cursos)
             {
-                
-                      
-                  conteoAsignatura += curso.Asignaturas.Count;
-                      conteoAlumno += curso.Alumonos.Count;
+
+                conteoAsignatura += curso.Asignaturas.Count;
+                conteoAlumno += curso.Alumonos.Count;
 
 
                 if (traeAsignaturas)
@@ -83,7 +140,6 @@ namespace CoreEscuela.Entidades
                 }
 
             }
-
             return ListObj;
         }
 

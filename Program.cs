@@ -17,8 +17,13 @@ namespace Etapa1
             Printer.WriteTitele("Curso de la escuela");
             Printer.Beep(10000, cantidad:1);
             ImprimirCursosEscuela(engine.Escuela);
-
-           var Listadeobj = engine.GetObjetoEscel(false ,false, false, false);
+      // parametros de salida, para optener datos
+           var Listadeobj = engine.GetObjetoEscel(
+            out int conteoEvaluaciones,
+            out int conteoAsignatura,
+            out int conteoAlumno,
+            out int conteoCursos
+           );
                              
            // var ListaILugar = from oj in Listadeobj
            //                   where oj is ILugar
