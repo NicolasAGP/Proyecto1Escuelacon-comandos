@@ -245,15 +245,14 @@ namespace CoreEscuela.Entidades
         #region carga de clases
         private void CargarEvaluaciones()
         {
+            var rnd = new Random();
             foreach (var curso in Escuela.Cursos)
             {
                 foreach (var asignatura in curso.Asignaturas)
                 {
                     foreach (var alumno in curso.Alumonos)
                     {
-                        var rnd = new Random(System.Environment.TickCount);
-
-
+                        
                         for (int i = 0; i < 5; i++)
                         {
                             var ev = new Evaluación

@@ -11,6 +11,7 @@ namespace Etapa1
     {
         static void Main(string[] args)
         {
+            AppDomain.CurrentDomain.ProcessExit += AcciondelEvent;
 
             var engine = new EscuelaEngine();
             
@@ -54,7 +55,13 @@ namespace Etapa1
           
         }
 
-    
+        private static void AcciondelEvent(object sender, EventArgs e)
+        {
+            Printer.WriteTitele("Saliendo");
+            Printer.Beep(1000, 1000, 2);
+            Printer.WriteTitele("Salo");
+        }
+
         private static void ImprimirCursosEscuela(Escuela escuela)
         {            
             if(escuela?.Cursos != null){
