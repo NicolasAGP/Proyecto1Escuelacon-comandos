@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using CoreEscuela.Entidades;
+using CoreEscuela.Util;
 
 namespace CoreEscuela.Entidades
 {
@@ -32,6 +33,76 @@ namespace CoreEscuela.Entidades
 
         }
 
+        public void ImpriDiccionario(Dictionary<LlaveDiccionario, IEnumerable<ObjetoEscuelaBase>> dic,
+                            bool imprEval = false)
+        {
+            foreach (var obj in dic)
+            {
+                Printer.WriteTitele(obj.Key.ToString());
+
+                foreach (var Kvp in obj.Value)
+                {
+                    switch (obj.Key)
+                    {
+                        case LlaveDiccionario.Evaluación:
+                        if (imprEval)
+                            Console.WriteLine(Kvp);
+                        break;
+                        case LlaveDiccionario.Escuela:
+                        Console.WriteLine("Escuela: " + Kvp);
+                        break;
+                        case LlaveDiccionario.Alumno:
+                        Console.WriteLine("Alumno :" + Kvp.Nombre);
+                        break;
+                        case LlaveDiccionario.Cursos:
+                        var ctmp = Kvp as Curso;
+                        if (ctmp != null)
+                        {
+                            int counnt = ctmp.Alumonos.Count;
+                             Console.WriteLine("Curso :" + Kvp.Nombre + "Cantidad de alumno" + counnt );
+                        }
+
+                        break;
+                        default:
+                        Console.WriteLine(Kvp);
+                        break;
+                    }
+                   
+
+
+                }
+            }
+
+        }
+        public Dictionary<LlaveDiccionario, IEnumerable<ObjetoEscuelaBase>> GetDiccionarioDeObjetos()
+        {
+
+            var diccionario = new Dictionary<LlaveDiccionario, IEnumerable<ObjetoEscuelaBase>>();
+            diccionario.Add(LlaveDiccionario.Escuela, new[] { Escuela });
+            diccionario.Add(LlaveDiccionario.Cursos, Escuela.Cursos.Cast<ObjetoEscuelaBase>());
+            var listatmp = new List<Evaluación>();
+            var listatmpas = new List<Asignatura>();
+            var listatmpal = new List<Alumno>();
+
+            foreach (var cur in Escuela.Cursos)
+            {
+
+                listatmpas.AddRange(cur.Asignaturas);
+                listatmpal.AddRange(cur.Alumonos);
+
+                foreach (var al in cur.Alumonos)
+                {
+
+                    listatmp.AddRange(al.Evaluaciones);
+                }
+
+            }
+            diccionario.Add(LlaveDiccionario.Evaluación, listatmp.Cast<ObjetoEscuelaBase>());
+            diccionario.Add(LlaveDiccionario.Asignatura, listatmpas.Cast<ObjetoEscuelaBase>());
+            diccionario.Add(LlaveDiccionario.Alumno, listatmpal.Cast<ObjetoEscuelaBase>());
+            return diccionario;
+
+        }
 
 
 
@@ -62,16 +133,16 @@ namespace CoreEscuela.Entidades
 
         }
 
-         public IReadOnlyList<ObjetoEscuelaBase> GetObjetoEscel(
-            out int conteoEvaluaciones, out int conteoCursos,
-            bool traeEvaluaciones = true,
-            bool traeAlumnos = true,
-            bool traeAsignaturas = true,
-            bool traeCursos = true
+        public IReadOnlyList<ObjetoEscuelaBase> GetObjetoEscel(
+           out int conteoEvaluaciones, out int conteoCursos,
+           bool traeEvaluaciones = true,
+           bool traeAlumnos = true,
+           bool traeAsignaturas = true,
+           bool traeCursos = true
 
-            )
+           )
         {
-            return GetObjetoEscel(out conteoEvaluaciones, out conteoCursos,  out int dummy, out dummy);
+            return GetObjetoEscel(out conteoEvaluaciones, out conteoCursos, out int dummy, out dummy);
 
         }
 
@@ -105,10 +176,10 @@ namespace CoreEscuela.Entidades
             )
         {
 
+            conteoEvaluaciones = conteoAsignatura = conteoAlumno = 0;
+
             var ListObj = new List<ObjetoEscuelaBase>();
             ListObj.Add(Escuela);
-
-            conteoEvaluaciones = conteoAsignatura = conteoAlumno = 0;
 
             if (traeCursos)
                 ListObj.AddRange(Escuela.Cursos);
@@ -140,7 +211,7 @@ namespace CoreEscuela.Entidades
                 }
 
             }
-            return ListObj;
+            return ListObj.AsReadOnly();
         }
 
 
@@ -189,7 +260,7 @@ namespace CoreEscuela.Entidades
                             {
                                 Asignatura = asignatura,
                                 Nombre = $"{asignatura.Nombre} Ev#{i + 1}",
-                                Nota = (float)(5 * rnd.NextDouble()),
+                                Nota = (float)Math.Round(5 * rnd.NextDouble(), 2),
                                 Alumno = alumno
                             };
                             alumno.Evaluaciones.Add(ev);

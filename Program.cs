@@ -13,17 +13,38 @@ namespace Etapa1
         {
 
             var engine = new EscuelaEngine();
+            
             engine.Inicializar();
             Printer.WriteTitele("Curso de la escuela");
-            Printer.Beep(10000, cantidad:1);
-            ImprimirCursosEscuela(engine.Escuela);
+            //Printer.Beep(1000, cantidad:1);
+            //ImprimirCursosEscuela(engine.Escuela);
+
+           // Dictionary<int, string> diccionario = new Dictionary<int, string>();
+//
+           // diccionario.Add(10, "nico");
+           // diccionario.Add(20, "cami");
+//
+           // foreach (var KeyValPair in diccionario)
+           // {
+           //     WriteLine($"Key: {KeyValPair.Key} Valor: {KeyValPair.Value}");
+           // }
+
+
+            var lol = engine.GetDiccionarioDeObjetos();
+           
+          engine.ImpriDiccionario(lol, true);
+        
+      
+      
+      
       // parametros de salida, para optener datos
-           var Listadeobj = engine.GetObjetoEscel(
-            out int conteoEvaluaciones,
-            out int conteoAsignatura,
-            out int conteoAlumno,
-            out int conteoCursos
-           );
+         
+         // var Listadeobj = engine.GetObjetoEscel(
+         //  out int conteoEvaluaciones,
+         //  out int conteoAsignatura,
+         //  out int conteoAlumno,
+         //  out int conteoCursos
+         // );
                              
            // var ListaILugar = from oj in Listadeobj
            //                   where oj is ILugar
